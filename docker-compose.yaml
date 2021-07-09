@@ -1,0 +1,79 @@
+version: '3.4'
+
+x-config-service:
+  &spring-config
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
+
+services:
+  discovery-service:
+    image: discovery-service
+    build:
+      ./discovery-service
+    ports:
+      - 8761:8761
+    container_name: discovery-service
+
+  config-service:
+    image: config-service
+    build:
+      ./config-service
+    ports:
+      - 8888:8888
+    depends_on:
+      - discovery-service
+      - postgres-db
+    container_name: config-service
+
+  account-service:
+    image: account-service
+    build:
+      ./account-service
+    ports:
+    - 8081:8081
+    depends_on:
+      - discovery-service
+      - config-service
+      - postgres-db
+    <<: *spring-config
+    container_name: account-service
+    restart: on-failure
+
+  shop-service:
+    image: shop-service
+    build:
+      ./shop-service
+    ports:
+      - 8082:8082
+    depends_on:
+      - discovery-service
+      - config-service
+      - postgres-db
+    <<: *spring-config
+    container_name: shop-service
+    restart: on-failure
+
+  statistic-service:
+    image: statistic-service
+    build:
+      ./statistic-service
+    ports:
+      - 8083:8083
+    depends_on:
+      - discovery-service
+      - config-service
+      - postgres-db
+    <<: *spring-config
+    container_name: statistic-service
+    restart: on-failure
+
+  postgres-db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: online_shop_db
+    container_name: postgres-db
+
