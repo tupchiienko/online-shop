@@ -11,10 +11,10 @@ spring:
           uri: https://github.com/tupchiienko/online-shop-config.git
 
   datasource:
-    url: jdbc:postgresql://${DB_HOST:postgres-db:5432}/${DB_NAME:online_shop_db}
+    url: jdbc:postgresql://postgres-db:5432/online_shop_db
     driver-class-name: org.postgresql.Driver
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:postgres}
+    username: postgres
+    password: postgres
     name: online_shop_db
 
 eureka:
@@ -25,4 +25,4 @@ eureka:
     instanceInfoReplicationIntervalSeconds: 5
     initialInstanceInfoReplicationIntervalSeconds: 5
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://discovery-service:8761/eureka/}
+      defaultZone: http://discovery-service:8761/eureka/

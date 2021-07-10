@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    name: ${DB_NAME}
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ${LOCAL_CONFIG_FOLDER_PATH}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

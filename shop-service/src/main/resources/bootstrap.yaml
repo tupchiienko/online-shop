@@ -1,7 +1,3 @@
 spring:
   application:
     name: shop-service
-  cloud:
-    config:
-      name: ${spring.application.name}
-      uri: http://localhost:8888
