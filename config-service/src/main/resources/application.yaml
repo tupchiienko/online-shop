@@ -24,5 +24,3 @@ eureka:
     registryFetchIntervalSeconds: 5
     instanceInfoReplicationIntervalSeconds: 5
     initialInstanceInfoReplicationIntervalSeconds: 5
-    serviceUrl:
-      defaultZone: http://discovery-service:8761/eureka/

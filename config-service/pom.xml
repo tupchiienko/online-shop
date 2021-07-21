@@ -17,7 +17,6 @@
         <flyway.user>postgres</flyway.user>
         <flyway.password>masterpass</flyway.password>
         <flyway.url>jdbc:postgresql://localhost:49154/online_shop_db</flyway.url>
-        <spring.cloud.version>2020.0.3</spring.cloud.version>
     </properties>
 
     <dependencies>
@@ -32,6 +31,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>

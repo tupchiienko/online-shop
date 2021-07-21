@@ -9,8 +9,13 @@ spring:
       server:
         native:
           search-locations: ${LOCAL_CONFIG_FOLDER_PATH}
+  security:
+    user:
+      name: configUser
+      password: configPassword
+      roles: SYSTEM
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discoveryUser:discoveryPassword@localhost:8761/eureka/
