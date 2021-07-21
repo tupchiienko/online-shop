@@ -30,6 +30,8 @@
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
         <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+        <spring.cloud.version>2020.0.3</spring.cloud.version>
+        <springdoc.version>1.5.2</springdoc.version>
     </properties>
 
     <build>
