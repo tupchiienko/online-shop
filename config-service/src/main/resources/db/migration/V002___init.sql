@@ -4,7 +4,7 @@ create table users_table
     firstName  varchar(32)           not null,
     lastName   varchar(32)           not null,
     age        smallint              not null,
-    phone      integer               not null,
+    phone      text                  not null,
     account_id bigint,
     constraint account_table_account_id_fk foreign key (account_id)
         references account_table (id)
@@ -17,5 +17,5 @@ create table account_table
     username varchar(32)           not null,
     email    varchar(32)           not null,
     password varchar(32)           not null,
-    role  text
+    role     text
 );

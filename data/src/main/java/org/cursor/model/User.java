@@ -17,18 +17,11 @@ public class User {
     private final String firstName;
     private final String lastName;
     private final int age;
-    private final int phone;
+    private final String phone;
     @OneToOne
     @JoinColumn(name = "account_id")
     private Account accountId;
 
-//    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Position> positions;
-//
-//    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Category> categories;
-//
-//    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Orders> orders;
+
 
 }
