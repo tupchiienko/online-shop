@@ -1,0 +1,51 @@
+server:
+    port: 8080
+
+spring:
+    redis:
+        host: localhost
+        port: 6379
+
+management:
+    security:
+        sessions: always
+
+zuul:
+    prefix: /api
+    routes:
+        account-service:
+            path: /account-service/**
+            sensitive-headers: Authorization
+        discovery-service:
+            path: /discovery-service/**
+            sensitive-headers: Authorization
+        shop-service:
+            path: /shop-service/**
+            sensitive-headers: Authorization
+        statistic-service:
+            path: /statistic-service/**
+            sensitive-headers: Authorization
+        
+
+hystrix:
+    command:
+        account-service:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 600000
+        discovery-service:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 600000
+        shop-service:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 600000
+        statistic-service:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 600000

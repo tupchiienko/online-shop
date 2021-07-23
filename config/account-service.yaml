@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+    application:
+        name: account-service
+    jpa:
+        hibernate:
+            ddl-auto: none
+    redis:
+        host: localhost
+        port: 6379
+
+management:
+    security:
+        sessions: never
+
+jwt:
+    secret: secret
+    token:
+        lifeTime: 150000

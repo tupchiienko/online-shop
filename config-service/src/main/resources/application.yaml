@@ -9,10 +9,15 @@ spring:
       server:
         git:
           uri: https://github.com/tupchiienko/online-shop-config.git
+  security:
+    user:
+      name: configUser
+      password: configPassword
+      roles: SYSTEM
 
   datasource:
-    url: jdbc:postgresql://postgres-db:5432/online_shop_db
     driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/online_shop_db
     username: postgres
     password: postgres
     name: online_shop_db
@@ -24,3 +29,5 @@ eureka:
     registryFetchIntervalSeconds: 5
     instanceInfoReplicationIntervalSeconds: 5
     initialInstanceInfoReplicationIntervalSeconds: 5
+    service-url:
+      defaultZone: http://discoveryUser:discoveryPassword@localhost:8761/eureka/
