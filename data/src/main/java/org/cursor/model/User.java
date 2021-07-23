@@ -1,22 +1,26 @@
 package org.cursor.model;
 
-import lombok.Data;
+import lombok.*;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+@Entity
 @Table(name = "users_table")
-@Data
-public class User {
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+public class User extends BaseEntity{
 
-    private final String firstName;
-    private final String lastName;
-    private final int age;
-    private final String phone;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String phone;
     @OneToOne
     @JoinColumn(name = "account_id")
     private Account accountId;
-
 
 }
