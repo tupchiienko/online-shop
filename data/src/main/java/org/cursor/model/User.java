@@ -1,19 +1,15 @@
 package org.cursor.model;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.UUID;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Table(name = "users_table")
 @Data
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
     private final String firstName;
     private final String lastName;
     private final int age;
@@ -21,7 +17,6 @@ public class User {
     @OneToOne
     @JoinColumn(name = "account_id")
     private Account accountId;
-
 
 
 }

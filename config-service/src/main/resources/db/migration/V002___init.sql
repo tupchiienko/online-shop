@@ -1,10 +1,10 @@
 create table users_table
 (
-    id         bigserial primary key not null,
-    firstName  varchar(32)           not null,
-    lastName   varchar(32)           not null,
-    age        smallint              not null,
-    phone      text                  not null,
+    id         uuid primary key default uuid_generate_v4(),
+    firstName  varchar(32) not null,
+    lastName   varchar(32) not null,
+    age        smallint    not null,
+    phone      text        not null,
     account_id bigint,
     constraint account_table_account_id_fk foreign key (account_id)
         references account_table (id)
@@ -13,9 +13,9 @@ create table users_table
 
 create table account_table
 (
-    id       bigserial primary key not null,
-    username varchar(32)           not null,
-    email    varchar(32)           not null,
-    password varchar(32)           not null,
+    id       uuid primary key default uuid_generate_v4(),
+    username varchar(32) not null,
+    email    varchar(32) not null,
+    password varchar(32) not null,
     role     text
 );
