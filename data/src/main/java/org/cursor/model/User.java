@@ -22,13 +22,13 @@ public class User {
     @JoinColumn(name = "account_id")
     private Account accountId;
 
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Position> positions;
-
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Category> categories;
-
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Orders> orders;
+//    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Position> positions;
+//
+//    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Category> categories;
+//
+//    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Orders> orders;
 
 }
