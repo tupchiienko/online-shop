@@ -1,4 +1,4 @@
-package org.cursor.model;
+package org.cursor.data.model;
 
 import lombok.Getter;
 import lombok.Setter;

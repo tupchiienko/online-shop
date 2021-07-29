@@ -1,0 +1,42 @@
+server:
+    port: 8080
+
+zuul:
+    routes:
+        account-service:
+            path: /account-service/**
+            sensitiveHeaders: Cookie,Set-Cookie
+            stripPrefix: false
+            url: http://localhost:8081/
+        discovery-service:
+            path: /discovery-service/**
+            url: http://localhost:8761/
+        shop-service:
+            path: /shop-service/**
+            url: http://localhost:8082/
+        statistic-service:
+            path: /statistic-service/**
+            url: http://localhost:8083/
+
+hystrix:
+    command:
+        account-service:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 600000
+        discovery-service:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 600000
+        shop-service:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 600000
+        statistic-service:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 600000

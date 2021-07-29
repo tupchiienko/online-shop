@@ -1,21 +1,6 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://${DB_HOST}/${DB_NAME}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-    name: ${DB_NAME}
   cloud:
     config:
       server:
         native:
-          search-locations: ${LOCAL_CONFIG_FOLDER_PATH}
-  security:
-    user:
-      name: configUser
-      password: configPassword
-      roles: SYSTEM
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://discoveryUser:discoveryPassword@localhost:8761/eureka/
+          search-locations: file:///${HOME}/IdeaProjects/online-shop/config
