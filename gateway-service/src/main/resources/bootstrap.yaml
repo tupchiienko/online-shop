@@ -7,6 +7,9 @@ spring:
       uri: http://localhost:8888
       username: configUser
       password: configPassword
+  security:
+    user:
+      roles: SYSTEM
 
 eureka:
   client:

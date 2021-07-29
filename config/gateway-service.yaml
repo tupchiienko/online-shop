@@ -1,31 +1,22 @@
 server:
     port: 8080
 
-spring:
-    redis:
-        host: localhost
-        port: 6379
-
-management:
-    security:
-        sessions: always
-
 zuul:
-    prefix: /api
     routes:
         account-service:
             path: /account-service/**
-            sensitive-headers: Authorization
+            sensitiveHeaders: Cookie,Set-Cookie
+            stripPrefix: false
+            url: http://localhost:8081/
         discovery-service:
             path: /discovery-service/**
-            sensitive-headers: Authorization
+            url: http://localhost:8761/
         shop-service:
             path: /shop-service/**
-            sensitive-headers: Authorization
+            url: http://localhost:8082/
         statistic-service:
             path: /statistic-service/**
-            sensitive-headers: Authorization
-        
+            url: http://localhost:8083/
 
 hystrix:
     command:

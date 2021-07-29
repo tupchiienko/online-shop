@@ -1,7 +1,7 @@
-package org.cursor.model;
+package org.cursor.data.model;
 
 import lombok.*;
-import org.cursor.model.enums.Role;
+import org.cursor.data.enums.Role;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Account extends BaseEntity{
+public class Account extends BaseEntity {
 
     private String username;
     private String email;

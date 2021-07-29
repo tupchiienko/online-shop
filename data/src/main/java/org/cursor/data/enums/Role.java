@@ -1,4 +1,4 @@
-package org.cursor.model.enums;
+package org.cursor.data.enums;
 
 public enum Role {
     ROLE_USER,

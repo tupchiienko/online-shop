@@ -1,4 +1,4 @@
-package org.cursor.model;
+package org.cursor.data.model;
 
 import lombok.*;
 
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Setter
 @ToString
 @NoArgsConstructor
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
     private String firstName;
     private String lastName;
