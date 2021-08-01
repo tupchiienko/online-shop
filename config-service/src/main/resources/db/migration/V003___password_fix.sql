@@ -1,0 +1,1 @@
+ALTER TABLE account_table ALTER COLUMN password TYPE varchar(256);
