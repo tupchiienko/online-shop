@@ -1,4 +1,4 @@
-package org.cursor.accountservice;
+package org.cursor.accountservice.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
@@ -42,7 +42,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends AbstractAuthenticat
     public Authentication attemptAuthentication(
             HttpServletRequest httpServletRequest,
             HttpServletResponse httpServletResponse
-    ) throws AuthenticationException, IOException, ServletException {
+    ) throws AuthenticationException, IOException {
         var account = mapper.readValue(httpServletRequest.getInputStream(), AccountLoginCredentials.class);
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -59,7 +59,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends AbstractAuthenticat
             HttpServletResponse response,
             FilterChain chain,
             Authentication authResult
-    ) throws IOException, ServletException {
+    ) {
         var currentTime = Instant.now();
         var token = Jwts.builder()
                 .setSubject(authResult.getName())
