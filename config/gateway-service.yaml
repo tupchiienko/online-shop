@@ -3,8 +3,8 @@ server:
 
 zuul:
     routes:
-        account-service:
-            path: /account-service/**
+        auth-service:
+            path: /auth-service/**
             sensitiveHeaders: Cookie,Set-Cookie
             stripPrefix: false
             url: http://localhost:8081/
@@ -20,7 +20,7 @@ zuul:
 
 hystrix:
     command:
-        account-service:
+        auth-service:
             execution:
                 isolation:
                     thread:

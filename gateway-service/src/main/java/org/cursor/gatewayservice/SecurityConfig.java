@@ -36,12 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
 
-                .antMatchers("/account-service/auth/*").anonymous()
+                .antMatchers("/auth-service/*").anonymous()
 
-                .antMatchers("/account-service/accounts/notifications/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/account-service/accounts/*").hasRole("ADMIN")
+                .antMatchers("/account-service/accounts/notifications/*").permitAll()
+                .antMatchers("/account-service/accounts/**").hasRole("ADMIN")
 
-                .antMatchers(HttpMethod.GET, "/shop-service/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/shop-service/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/shop-service/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/shop-service/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/shop-service/**").hasRole("ADMIN")
