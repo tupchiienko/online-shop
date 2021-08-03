@@ -1,4 +1,4 @@
-package org.cursor.accountservice.config;
+package org.cursor.authservice.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
@@ -15,7 +15,6 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -31,7 +30,7 @@ public class JwtUsernamePasswordAuthenticationFilter extends AbstractAuthenticat
     private final long expiration;
 
     public JwtUsernamePasswordAuthenticationFilter(String secret, long expiration, AuthenticationManager authenticationManager) {
-        super(new AntPathRequestMatcher("/account-service/auth/login", HttpMethod.POST.name()));
+        super(new AntPathRequestMatcher("/auth-service/login", HttpMethod.POST.name()));
         setAuthenticationManager(authenticationManager);
         this.mapper = new ObjectMapper();
         this.secret = secret;

@@ -1,10 +1,10 @@
-package org.cursor.accountservice;
+package org.cursor.authservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AccountServiceApplicationTests {
+class AuthServiceApplicationTests {
 
     @Test
     void contextLoads() {

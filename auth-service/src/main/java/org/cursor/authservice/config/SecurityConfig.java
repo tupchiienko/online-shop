@@ -1,6 +1,6 @@
-package org.cursor.accountservice.config;
+package org.cursor.authservice.config;
 
-import org.cursor.accountservice.service.AccountService;
+import org.cursor.authservice.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -26,10 +26,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(
             AuthenticationManagerBuilder auth,
-            AccountService accountService,
+            AuthService authService,
             PasswordEncoder encoder
     ) throws Exception {
-        auth.userDetailsService(accountService).passwordEncoder(encoder);
+        auth.userDetailsService(authService).passwordEncoder(encoder);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         new JwtUsernamePasswordAuthenticationFilter(secret, expiration, authenticationManager()),
                         UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/account-service/auth/*").anonymous()
+                .antMatchers("/auth-service/*").anonymous()
                 .anyRequest().authenticated();
     }
 

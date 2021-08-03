@@ -1,8 +1,8 @@
-package org.cursor.accountservice.service;
+package org.cursor.authservice.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.cursor.accountservice.repository.AccountRepository;
+import org.cursor.authservice.repository.AccountRepository;
 import org.cursor.data.dto.AccountDto;
 import org.cursor.data.exception.AccountAlreadyExistException;
 import org.cursor.data.model.Account;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AccountServiceImpl implements AccountService {
+public class AuthServiceImpl implements AuthService {
 
     private final AccountRepository accountRepository;
     private final ObjectMapper mapper;

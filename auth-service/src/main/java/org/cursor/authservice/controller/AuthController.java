@@ -1,7 +1,7 @@
-package org.cursor.accountservice.controller;
+package org.cursor.authservice.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.cursor.accountservice.service.AccountService;
+import org.cursor.authservice.service.AuthService;
 import org.cursor.data.dto.AccountDto;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/account-service")
 @RequiredArgsConstructor
-public class AccountController {
+@RequestMapping("/auth-service")
+public class AuthController {
 
-    private final AccountService accountService;
+    private final AuthService authService;
 
     @PostMapping(
-            value = "/auth/register",
+            value = "/register",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<?> createAccount(@RequestBody AccountDto accountDto) {
-        accountService.register(accountDto);
+        authService.register(accountDto);
         return ResponseEntity.ok().build();
     }
 

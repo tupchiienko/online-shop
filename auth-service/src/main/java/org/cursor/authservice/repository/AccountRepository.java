@@ -1,4 +1,4 @@
-package org.cursor.accountservice.repository;
+package org.cursor.authservice.repository;
 
 import org.cursor.data.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;

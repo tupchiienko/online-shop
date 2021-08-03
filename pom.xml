@@ -20,7 +20,7 @@
         <module>config-service</module>
         <module>discovery-service</module>
         <module>gateway-service</module>
-        <module>account-service</module>
+        <module>auth-service</module>
         <module>shop-service</module>
         <module>statistic-service</module>
     </modules>
@@ -68,6 +68,11 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>42.2.20</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>2.3.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
