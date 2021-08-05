@@ -1,5 +1,6 @@
-package org.cursor.gatewayservice;
+package org.cursor.gatewayservice.config;
 
+import org.cursor.gatewayservice.filter.JwtTokenAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

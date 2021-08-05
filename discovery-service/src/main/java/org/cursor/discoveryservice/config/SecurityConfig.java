@@ -1,4 +1,4 @@
-package org.cursor.discoveryservice;
+package org.cursor.discoveryservice.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package org.cursor.gatewayservice;
+package org.cursor.gatewayservice.filter;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.http.HttpHeaders;
