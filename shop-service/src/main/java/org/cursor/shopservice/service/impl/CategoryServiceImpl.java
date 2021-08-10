@@ -1,10 +1,11 @@
-package org.cursor.shopservice.service;
+package org.cursor.shopservice.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.cursor.data.dto.CategoryDto;
 import org.cursor.data.model.Category;
 import org.cursor.shopservice.repository.CategoryRepository;
+import org.cursor.shopservice.service.CategoryService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

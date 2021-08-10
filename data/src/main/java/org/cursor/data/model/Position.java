@@ -19,9 +19,7 @@ public class Position extends BaseEntity {
     private String name;
     private BigInteger price;
     private String description;
-
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long article;
+    private String article;
 
     @OneToMany
     @JoinTable(
