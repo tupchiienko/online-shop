@@ -9,16 +9,16 @@ import java.util.UUID;
 
 public interface PositionService {
 
-    Position getById(UUID id);
+    Position getPositionById(UUID id);
 
-    Position getByArticle(String article);
+    Position getPositionByArticle(String article);
 
-    Page<Position> getAllPaged(Pageable pageable);
+    Page<Position> getAllPositionsPaged(Pageable pageable);
 
-    Position save(PositionDto positionDto);
+    Position createPosition(PositionDto positionDto);
 
-    void update(UUID id);
+    void updatePosition(UUID id, PositionDto positionDto);
 
-    void delete(UUID id);
+    void deletePosition(UUID id);
 
 }
