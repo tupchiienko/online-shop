@@ -5,3 +5,8 @@ spring:
     jpa:
         hibernate:
             ddl-auto: none
+
+aws:
+    s3:
+        bucket: bucket
+        host: http://localhost:4566
