@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Image extends BaseEntity {
 
-    private String description;
+    private String name;
 
     @Enumerated(EnumType.ORDINAL)
     private ImageFormat format;

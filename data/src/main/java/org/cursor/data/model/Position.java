@@ -21,7 +21,7 @@ public class Position extends BaseEntity {
     private String description;
     private String article;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "positions_images",
             joinColumns = @JoinColumn(
@@ -40,5 +40,13 @@ public class Position extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    public void addImage(Image image) {
+        images.add(image);
+    }
+
+    public void deleteImage(Image image) {
+        images.remove(image);
+    }
 
 }
