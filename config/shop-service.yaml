@@ -1,11 +1,6 @@
 server:
     port: 8082
 
-spring:
-    jpa:
-        hibernate:
-            ddl-auto: none
-
 aws:
     s3:
         bucket: bucket

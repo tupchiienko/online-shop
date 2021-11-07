@@ -1,79 +1,113 @@
-version: '3.4'
+version: '3.8'
 
 x-config-service:
-  &spring-config
-    environment:
-      - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
+  &cloud-config
+   environment:
+     - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
+     - SPRING_CLOUD_CONFIG_USERNAME=configUser
+     - SPRING_CLOUD_CONFIG_PASSWORD=configPassword
 
 services:
-  discovery-service:
-    image: discovery-service
-    build:
-      ./discovery-service
-    ports:
-      - 8761:8761
-    container_name: discovery-service
-
   config-service:
     image: config-service
     build:
-      ./config-service
+      dockerfile: ./config-service/Dockerfile
     ports:
-      - 8888:8888
+      - "8888:8888"
     depends_on:
-      - discovery-service
       - postgres-db
     container_name: config-service
+    restart: always
+
+  discovery-service:
+    image: discovery-service
+    build:
+      dockerfile: ./discovery-service/Dockerfile
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-service
+    container_name: discovery-service
+    restart: always
+    <<: *cloud-config
 
   auth-service:
     image: auth-service
     build:
-      ./auth-service
+      dockerfile: ./auth-service/Dockerfile
     ports:
-    - 8081:8081
+    - "8081:8081"
     depends_on:
       - discovery-service
       - config-service
       - postgres-db
-    <<: *spring-config
     container_name: auth-service
-    restart: on-failure
+    restart: always
+    <<: *cloud-config
+
+  gateway-service:
+    image: gateway-service
+    build:
+      dockerfile: ./gateway-service/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - discovery-service
+      - config-service
+      - postgres-db
+    container_name: gateway-service
+    restart: always
+    <<: *cloud-config
 
   shop-service:
     image: shop-service
     build:
-      ./shop-service
+      dockerfile: ./shop-service/Dockerfile
     ports:
-      - 8082:8082
+      - "8082:8082"
     depends_on:
       - discovery-service
       - config-service
       - postgres-db
-    <<: *spring-config
+      - gateway-service
+      - localstack
     container_name: shop-service
-    restart: on-failure
+    restart: always
+    <<: *cloud-config
 
   statistic-service:
     image: statistic-service
     build:
-      ./statistic-service
+      dockerfile: ./statistic-service/Dockerfile
     ports:
-      - 8083:8083
+      - "8083:8083"
     depends_on:
       - discovery-service
       - config-service
       - postgres-db
-    <<: *spring-config
+      - gateway-service
     container_name: statistic-service
-    restart: on-failure
+    restart: always
+    <<: *cloud-config
 
   postgres-db:
     image: postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: online_shop_db
     container_name: postgres-db
+    restart: always
 
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    hostname: localstack
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+    environment:
+      - SERVICES=s3
+    restart: always

@@ -4,6 +4,9 @@ spring:
         url: jdbc:postgresql://localhost:5432/online_shop_db
         username: postgres
         password: postgres
+    jpa:
+        hibernate:
+            ddl-auto: none
 
 eureka:
     instance:
@@ -12,6 +15,8 @@ eureka:
         registryFetchIntervalSeconds: 5
         instanceInfoReplicationIntervalSeconds: 5
         initialInstanceInfoReplicationIntervalSeconds: 5
+        serviceUrl:
+            defaultZone: http://discoveryUser:discoveryPassword@localhost:8761/eureka/
 
 security:
     jwt:
