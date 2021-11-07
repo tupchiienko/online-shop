@@ -1,0 +1,6 @@
+spring:
+  security:
+    user:
+      name: configUser
+      password: configPassword
+      roles: SYSTEM
