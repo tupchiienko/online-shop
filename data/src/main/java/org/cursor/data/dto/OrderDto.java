@@ -7,6 +7,7 @@ import org.cursor.data.enums.OrderStatus;
 
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -19,5 +20,5 @@ public class OrderDto {
     private BigInteger orderPrice;
     private OrderStatus orderStatus;
     private UUID userId;
-
+    private List<UUID> orderItemsIds;
 }

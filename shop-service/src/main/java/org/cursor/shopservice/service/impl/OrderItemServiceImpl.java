@@ -30,6 +30,11 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    public List<OrderItem> getAllByIds(List<UUID> idList) {
+        return orderItemRepository.findAllById(idList);
+    }
+
+    @Override
     public OrderItem createOrderItem(OrderItemDto orderItemDto) {
         return orderItemRepository.save(mapper.convertValue(orderItemDto, OrderItem.class));
     }

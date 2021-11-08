@@ -3,8 +3,10 @@ package org.cursor.shopservice.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.cursor.data.dto.OrderDto;
+import org.cursor.data.enums.OrderStatus;
 import org.cursor.data.model.Order;
 import org.cursor.shopservice.repository.OrderRepository;
+import org.cursor.shopservice.service.OrderItemService;
 import org.cursor.shopservice.service.OrderService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ import java.util.UUID;
 public class OrderServiceImpl implements OrderService {
 
     private OrderRepository orderRepository;
+    private OrderItemService orderItemService;
     private ObjectMapper mapper;
 
     @Override
@@ -30,8 +33,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> getAllOrdersByUserId(UUID userId) {
+        return orderRepository.findAllByUserId(userId);
+    }
+
+    @Override
     public Order createOrder(OrderDto orderDto) {
-        return orderRepository.save(mapper.convertValue(orderDto, Order.class));
+        Order order = mapper.convertValue(orderDto, Order.class);
+        order.setOrderStatus(OrderStatus.CREATED);
+        order.setOrderItems(orderItemService.getAllByIds(orderDto.getOrderItemsIds()));
+        return orderRepository.save(order);
     }
 
     @Override
@@ -39,6 +50,7 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.findById(id).orElseThrow();
         var order = mapper.convertValue(orderDto, Order.class);
         order.setId(id);
+        order.setOrderItems(orderItemService.getAllByIds(orderDto.getOrderItemsIds()));
         orderRepository.save(order);
     }
 

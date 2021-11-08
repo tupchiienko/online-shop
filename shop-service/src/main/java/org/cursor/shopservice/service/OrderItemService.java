@@ -12,6 +12,8 @@ public interface OrderItemService {
 
     List<OrderItem> getAllOrderItems();
 
+    List<OrderItem> getAllByIds(List<UUID> idList);
+
     OrderItem createOrderItem(OrderItemDto orderItemDto);
 
     void updateOrderItem(UUID id, OrderItemDto orderItemDto);
