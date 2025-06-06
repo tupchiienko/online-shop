@@ -1,6 +1,7 @@
 package org.cursor.shopservice.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import org.cursor.data.dto.OrderDto;
 import org.cursor.data.enums.OrderStatus;
 import org.cursor.data.model.Order;
@@ -40,7 +41,9 @@ class OrderServiceImplTest {
         service = new OrderServiceImpl();
         ReflectionTestUtils.setField(service, "orderRepository", orderRepository);
         ReflectionTestUtils.setField(service, "orderItemService", orderItemService);
-        ReflectionTestUtils.setField(service, "mapper", new ObjectMapper());
+        ObjectMapper mapper = new ObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        ReflectionTestUtils.setField(service, "mapper", mapper);
     }
 
     @Test

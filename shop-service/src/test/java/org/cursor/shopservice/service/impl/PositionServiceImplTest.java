@@ -1,6 +1,7 @@
 package org.cursor.shopservice.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import org.cursor.data.dto.PositionDto;
 import org.cursor.data.exception.FileFormatException;
 import org.cursor.data.model.Category;
@@ -49,7 +50,9 @@ class PositionServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        service = new PositionServiceImpl(positionRepository, categoryRepository, imageRepository, new ObjectMapper(), awsFileService);
+        ObjectMapper mapper = new ObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        service = new PositionServiceImpl(positionRepository, categoryRepository, imageRepository, mapper, awsFileService);
     }
 
     @Test
