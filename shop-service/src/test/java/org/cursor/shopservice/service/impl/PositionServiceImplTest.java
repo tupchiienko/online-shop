@@ -1,3 +1,5 @@
+package org.cursor.shopservice.service.impl;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.cursor.data.dto.PositionDto;
 import org.cursor.data.exception.FileFormatException;

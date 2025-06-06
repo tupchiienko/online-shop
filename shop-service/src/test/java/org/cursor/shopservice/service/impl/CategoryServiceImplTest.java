@@ -1,3 +1,5 @@
+package org.cursor.shopservice.service.impl;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.cursor.data.dto.CategoryDto;
 import org.cursor.data.model.Category;
